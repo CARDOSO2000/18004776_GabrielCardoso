@@ -1,0 +1,17 @@
+1.  C:\Program Files\Java\jdk1.8.0_162
+
+2. C:\Program Files\Java\jdk1.8.0_162\bin\java
+   C:\Program Files\Java\jdk1.8.0_162\bin\javac
+
+3.javac nome do arquivo
+
+4.java nome do arquivo
+
+5.São valores nomeados dinamicamente no sistema operacional (Atalhos)e é utilizada para
+guardar senhas e configurar sistemas
+
+6. Se for seu ambiente pode
+
+7. Ir para o sistema  config avançada do sistema
+
+8. Caminho para o java no pc
