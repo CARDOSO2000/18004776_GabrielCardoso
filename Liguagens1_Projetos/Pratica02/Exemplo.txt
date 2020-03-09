@@ -1,0 +1,2 @@
+Celular: Tem: tela, botões, camera, bateria, lanterna, SO, cor
+         Faz: Ligação(), tira foto(), envia mensagens(), SeConectaComaInternet(),
