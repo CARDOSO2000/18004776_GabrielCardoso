@@ -49,11 +49,18 @@ public class JogoBIG {
             a.Registrar();
             b.Registrar();
             String S;
+            Int i = 0;
             do{
-                while(!(a.Jogada() && b.Jogada())) {
-                    a.Jogada();
+                while(i == 0) {
+                    if(a.Jogada()){
                     b.Jogada();
+                } if(b.Jogada()){
+                  i = 1;   
+                }else{
+                    i = 0;
                 }
+
+            }
                 Partida(a, b);
                 Scanner n = new Scanner(System.in);
                 System.out.println("Quer tentar denovo?S/N");
