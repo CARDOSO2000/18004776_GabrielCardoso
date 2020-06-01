@@ -1,25 +1,13 @@
 package com.company;
 
-public class Vendedor {
-    private double salarioBase;
-    private double comissao;
+public class Vendedor extends Funcionario {
+
     private Gerente gerente;
 
     public Vendedor(double salarioBase, Gerente gerente){
+        super(salarioBase);
         this.gerente = gerente;
-        this.salarioBase = salarioBase;
-        this.comissao = 0.05;
-    }
 
-    public double getSalarioBase() {
-        return salarioBase;
-    }
-
-    public double getComissao() {
-        return comissao;
-    }
-    public double getSalarioFinal(double totalVendasMes){
-        return salarioBase + comissao*totalVendasMes;
     }
 
     public final Gerente getGerente() {
