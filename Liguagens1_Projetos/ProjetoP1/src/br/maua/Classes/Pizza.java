@@ -1,6 +1,7 @@
 package br.maua.Classes;
 
 import br.maua.ENUM.Estado;
+import br.maua.ENUM.Paagamento;
 import br.maua.ENUM.TipoDePizza;
 
 import java.util.Random;
@@ -10,11 +11,14 @@ public abstract class Pizza {
  private int preco;
  private String ID;
  private Estado estado;
+ private Paagamento pagamento;
 
- public Pizza(TipoDePizza sabor, int preco, Estado estado) {
+ public Pizza(TipoDePizza sabor, int preco, Estado estado, Paagamento pagamento) {
   Sabor = sabor;
   this.preco = preco;
   this.ID = geradorId();
+  this.estado = estado;
+  this.pagamento = pagamento;
 
  }
  private String geradorId(){
@@ -41,6 +45,10 @@ public abstract class Pizza {
   return estado;
  }
 
+ public Paagamento getPagamento() {
+  return pagamento;
+ }
+
  @Override
  public String toString() {
   return "Pizza{" +
@@ -48,6 +56,7 @@ public abstract class Pizza {
           ", preco=" + preco +
           "R$, ID='" + ID + '\'' +
           ", estado=" + estado +
+          ", pagamento=" + pagamento +
           '}';
  }
 }
