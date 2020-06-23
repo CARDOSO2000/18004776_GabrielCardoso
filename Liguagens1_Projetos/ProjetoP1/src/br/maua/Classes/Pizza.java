@@ -22,6 +22,15 @@ public abstract class Pizza {
   return idGerado;
  }
 
+ public TipoDePizza getSabor() {
+  return Sabor;
+ }
 
+ public int getPreco() {
+  return preco;
+ }
 
+ public String getID() {
+  return ID;
+ }
 }
