@@ -118,5 +118,17 @@ public class Pedido {
         System.out.println("Total: "+getTotal());
         System.out.println("Estado"+ getEstado() + " }");
     }
+    protected void removerPizza(){
+        System.out.println("Qual deseja remover?");
+        for (Pizza pizzalista: this.pizza) {
+            int i = 0;
+            System.out.println(i + " - " + pizzalista.getSabor());
+            i++;
+        }
+        Scanner scanner = new Scanner(System.in);
+        int j = scanner.nextInt();
+        this.pizza.remove(j);
+        ValorTotal();
+    }
 
 }
