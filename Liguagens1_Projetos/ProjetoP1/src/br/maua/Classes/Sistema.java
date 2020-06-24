@@ -41,12 +41,13 @@ public class Sistema {
                     String w = scanner.nextLine();
                     p = escolherID(w);
                 }while(p == 0.1);
+                    j = scanner.nextInt();
                     Pedido alterar = listadepedidos.get((int)p);
                     System.out.println("Oque deseja alterar?");
                     System.out.println("1 - Estado?");
-                    System.out.println("2 - Forma de pagamento");
-                    System.out.println("3 - Sabor");
-                    System.out.println("");
+                    System.out.println("2 - Forma de pagamento?");
+                    System.out.println("3 - Sabor?");
+                    System.out.println("4 - Remover?");
 
 
                 }
