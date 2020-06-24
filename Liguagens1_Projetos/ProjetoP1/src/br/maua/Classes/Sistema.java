@@ -2,6 +2,7 @@ package br.maua.Classes;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.function.DoubleToIntFunction;
 
 public class Sistema {
     ArrayList<Pedido> listadepedidos;
@@ -32,15 +33,36 @@ public class Sistema {
             case 3:
                 int j = usuario.Verificarsenha();
                 if(j == 1){
+                    double p;
+                    do {
                     System.out.println("Qual pedido quer alterar?");
-                    for (Pedido pedidos: listadepedidos) {
-                        System.out.println("Pedido: "+pedidos.getID());
+                    for (Pedido pedidos : listadepedidos) {
+                        System.out.println("Pedido: " + pedidos.getID());
                     }
                     String w = scanner.nextLine();
-                    
+                    p = escolherID(w);
+                }while(p == 0.1);
+                    Pedido alterar = listadepedidos.get((int)p);
+                    System.out.println("Oque deseja alterar?");
+                    System.out.println("1 - Estado?");
+                    System.out.println("2 - Forma de pagamento");
+                    System.out.println("3 - Sabor");
+                    System.out.println("");
+
+
                 }
         }
     }
-
+    private double escolherID(String g){
+        double j = 0.1;
+        for (Pedido pedido: listadepedidos) {
+            int i = 0;
+            if(g.equals(pedido.getID())){
+                 j = i;
+            }
+            i++;
+        }
+        return j;
+    }
 
 }
