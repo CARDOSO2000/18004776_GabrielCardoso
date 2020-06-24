@@ -47,7 +47,13 @@ public class Sistema {
                     System.out.println("1 - Estado?");
                     System.out.println("2 - Forma de pagamento?");
                     System.out.println("3 - Sabor?");
-                    System.out.println("4 - Remover?");
+                    System.out.println("4 - Remover");
+                    System.out.println("5 - Adicionar sabor?");
+                    System.out.println("0 - Acabou");
+                    switch (j){
+                        case 1:
+
+                    }
 
 
                 }

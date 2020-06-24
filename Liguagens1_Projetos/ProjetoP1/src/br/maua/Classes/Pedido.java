@@ -114,6 +114,10 @@ public class Pedido {
         return estado;
     }
 
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
     public void Listarpedido(){
         System.out.println("Pedido: "+ getID()+ " {");
         for (Pizza pizzalista: this.pizza) {
@@ -172,6 +176,43 @@ public class Pedido {
                 this.pizza.add(pizza4);
                 ValorTotal();
                 break;
+        }
+
+    }
+    void AlterarEstado(){
+        System.out.println("Estado atual: " + this.estado);
+        System.out.println("Deseja alterar?");
+        System.out.println("1 - Sim");
+        System.out.println("2 - Nao");
+        Scanner scanner = new Scanner(System.in);
+        int i = scanner.nextInt();
+        if(i == 1){
+            System.out.println("Qual estado está agora?");
+            System.out.println("1 - Realizado");
+            System.out.println("2 - Em preparo");
+            System.out.println("3 - Saiu");
+            System.out.println("4 - Entregue");
+            System.out.println("5 - Devolvido");
+            i = scanner.nextInt();
+            switch (i){
+                case 1:
+                    this.estado = Estado.REALIZADO;
+                    break;
+                case 2:
+                    this.estado = Estado.PREPARACAO;
+                    break;
+                case 3:
+                    this.estado = Estado.SAIU_PARA_ENTREGA;
+                    break;
+                case 4:
+                    this.estado = Estado.ENTREGUE;
+                    break;
+                case 5:
+                    this.estado = Estado.DEVOLVIDO;
+                    break;
+            }
+        }else{
+            System.out.println("O estado não foi alterado");
         }
 
     }
