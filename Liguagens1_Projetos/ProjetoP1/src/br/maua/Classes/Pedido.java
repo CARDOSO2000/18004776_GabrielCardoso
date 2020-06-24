@@ -60,9 +60,7 @@ public class Pedido {
         }
        return  this.total = valor;
     }
-    protected void DefiroPagamento(){
 
-    }
     private String geradorID(){
         Random random = new Random();
         String idGerado = "";

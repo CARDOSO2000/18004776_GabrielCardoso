@@ -2,9 +2,10 @@ package br.maua.Classes;
 
 import br.maua.Interface.VerificarSenha;
 
+import java.util.Scanner;
 
 
-public class Usuario implements VerificarSenha {
+public abstract class Usuario implements VerificarSenha {
     private String Name;
     private String senha;
     private String email;
@@ -30,11 +31,8 @@ public class Usuario implements VerificarSenha {
 
     @Override
     public int Verificarsenha(int i) {
-        String senha;
-        senha = String.valueOf(i);
-        if(senha.equals(getSenha()))
-            return 1;
-        else
-            return 0;
+        return 0;
     }
+
+
 }

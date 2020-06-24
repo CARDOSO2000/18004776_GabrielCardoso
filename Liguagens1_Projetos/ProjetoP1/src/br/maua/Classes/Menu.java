@@ -1,7 +1,7 @@
 package br.maua.Classes;
 
-public class Interface {
-    public void Interface(){
+public class Menu {
+    public void printaInterface(){
         System.out.println("Pizzaria o Rato que Ri:");
         System.out.println("1- Nova Venda");
         System.out.println("2- Verificar pedidos");
