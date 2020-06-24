@@ -114,9 +114,7 @@ public class Pedido {
         return estado;
     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
+
 
     public void Listarpedido(){
         System.out.println("Pedido: "+ getID()+ " {");
