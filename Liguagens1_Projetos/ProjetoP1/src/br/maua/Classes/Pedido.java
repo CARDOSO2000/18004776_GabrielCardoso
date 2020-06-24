@@ -10,11 +10,10 @@ import java.util.Scanner;
 
 public class Pedido {
     private String ID;
-    private ArrayList<Pizza> pizza;
     private int total;
     private Paagamento paagamento;
     private Estado estado;
-
+    ArrayList<Pizza> pizza = new ArrayList<>();
     public Pedido() {
         this.ID = geradorID();
         this.estado = Estado.PREPARACAO;

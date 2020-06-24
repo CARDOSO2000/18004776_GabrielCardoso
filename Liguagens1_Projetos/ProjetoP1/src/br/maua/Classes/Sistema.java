@@ -2,17 +2,19 @@ package br.maua.Classes;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.function.DoubleToIntFunction;
+
 
 public class Sistema {
-    ArrayList<Pedido> listadepedidos;
+    ArrayList<Pedido> listadepedidos = new ArrayList<>();
     Menu oi = new Menu();
     Usuario usuario = new dono("Jorge","123456","Naosabiaqovenosaurerameta@sad.triste");
     public void run(){
-        oi.printaInterface();
+
         Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
+        int n;
         do {
+            oi.printaInterface();
+             n = scanner.nextInt();
             switch (n) {
                 case 1:
                     int i = usuario.Verificarsenha();
@@ -40,6 +42,7 @@ public class Sistema {
                                 System.out.println("Pedido: " + pedidos.getID());
                             }
                             String w = scanner.nextLine();
+                            
                             p = escolherID(w);
                         } while (p == 0.1);
                         j = scanner.nextInt();
