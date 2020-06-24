@@ -19,7 +19,6 @@ public class Sistema {
                     Pedido pedido = new Pedido();
                     pedido.AdicionarPizza();
                     pedido.FormadePagamento();
-                    pedido.ValorTotal();
                     listadepedidos.add(pedido);
                 }else {
                     System.out.println("Senha incorreta");

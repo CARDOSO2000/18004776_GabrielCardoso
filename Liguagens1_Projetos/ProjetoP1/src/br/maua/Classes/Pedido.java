@@ -35,18 +35,22 @@ public class Pedido {
                 case 1:
                     Pizza pizza1 = new Mucarela();
                     this.pizza.add(pizza1);
+                    ValorTotal();
                     break;
                 case 2:
                     Pizza pizza2 = new Marguerita();
                     this.pizza.add(pizza2);
+                    ValorTotal();
                     break;
                 case 3:
                     Pizza pizza3 = new Peperoni();
                     this.pizza.add(pizza3);
+                    ValorTotal();
                     break;
                 case 4:
                     Pizza pizza4 = new Alcachofra();
                     this.pizza.add(pizza4);
+                    ValorTotal();
                     break;
             }
 
