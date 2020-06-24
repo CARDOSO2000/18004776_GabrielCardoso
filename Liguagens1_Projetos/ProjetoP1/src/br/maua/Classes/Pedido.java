@@ -99,14 +99,26 @@ public class Pedido {
             }
     }
 
-    @Override
-    public String toString() {
-        return "Pedido{" +
-                "ID='" + ID + '\'' +
-                ", pizza=" + pizza +
-                ", total=" + total +
-                ", paagamento=" + paagamento +
-                ", estado=" + estado +
-                '}';
+
+    public String getID() {
+        return ID;
     }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void Listarpedido(){
+        System.out.println("Pedido: "+ getID()+ " {");
+        for (Pizza pizzalista: this.pizza) {
+            System.out.println("Sabor: " + pizzalista.getSabor() + " Preco: " + pizzalista.getPreco());
+        }
+        System.out.println("Total: "+getTotal());
+        System.out.println("Estado"+ getEstado() + " }");
+    }
+
 }
