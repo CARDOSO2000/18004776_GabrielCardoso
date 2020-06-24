@@ -178,18 +178,14 @@ public class Pedido {
     }
     void AlterarEstado(){
         System.out.println("Estado atual: " + this.estado);
-        System.out.println("Deseja alterar?");
-        System.out.println("1 - Sim");
-        System.out.println("2 - Nao");
         Scanner scanner = new Scanner(System.in);
-        int i = scanner.nextInt();
-        if(i == 1){
             System.out.println("Qual estado está agora?");
             System.out.println("1 - Realizado");
             System.out.println("2 - Em preparo");
             System.out.println("3 - Saiu");
             System.out.println("4 - Entregue");
             System.out.println("5 - Devolvido");
+            int i;
             i = scanner.nextInt();
             switch (i){
                 case 1:
@@ -208,9 +204,7 @@ public class Pedido {
                     this.estado = Estado.DEVOLVIDO;
                     break;
             }
-        }else{
-            System.out.println("O estado não foi alterado");
-        }
+
 
     }
 

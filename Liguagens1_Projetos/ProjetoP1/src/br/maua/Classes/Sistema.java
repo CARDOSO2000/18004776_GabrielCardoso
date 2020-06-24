@@ -35,25 +35,27 @@ public class Sistema {
                 case 3:
                     int j = usuario.Verificarsenha();
                     if (j == 1) {
-                        double p;
-                        do {
+                        int p;
+
                             System.out.println("Qual pedido quer alterar?");
                             for (Pedido pedidos : listadepedidos) {
                                 System.out.println("Pedido: " + pedidos.getID());
                             }
-                            String w = scanner.nextLine();
-                            
+                            String w;
+                            w = scanner.next();
                             p = escolherID(w);
-                        } while (p == 0.1);
-                        j = scanner.nextInt();
-                        System.out.println("Oque deseja alterar?");
-                        System.out.println("1 - Estado?");
-                        System.out.println("2 - Forma de pagamento?");
-                        System.out.println("3 - Sabor?");
-                        System.out.println("4 - Remover pizza");
-                        System.out.println("5 - Adicionar pizza?");
-                        System.out.println("0 - Acabou");
+
+                        System.out.println(p);
+
                         do {
+                            System.out.println("Oque deseja alterar?");
+                            System.out.println("1 - Estado?");
+                            System.out.println("2 - Forma de pagamento?");
+                            System.out.println("3 - Sabor?");
+                            System.out.println("4 - Remover pizza");
+                            System.out.println("5 - Adicionar pizza?");
+                            System.out.println("0 - Acabou");
+                            j = scanner.nextInt();
                             switch (j) {
                                 case 1:
                                     listadepedidos.get((int) p).AlterarEstado();
@@ -77,8 +79,8 @@ public class Sistema {
             }
         }while (n != 0);
     }
-    private double escolherID(String g){
-        double j = 0.1;
+    private int escolherID(String g){
+        int j = 0;
         for (Pedido pedido: listadepedidos) {
             int i = 0;
             if(g.equals(pedido.getID())){
