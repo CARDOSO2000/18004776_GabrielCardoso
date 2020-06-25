@@ -2,16 +2,25 @@ package br.maua.Classes;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * @author Gabriel de Laurentis Dias Cardoso 18.00477-6
+ * Classe do sistema que cria um array de pedidos em sua db
+ */
 
 public class Sistema {
     ArrayList<Pedido> listadepedidos = new ArrayList<>();
     Menu oi = new Menu();
     Usuario usuario = new dono("Jorge","123456","Naosabiaqovenosaurerameta@sad.triste");
+
+    /**
+     * A run roda o menu epede para o usuario definir qual a opção desejada
+     */
     public void run(){
 
         Scanner scanner = new Scanner(System.in);
         int n;
+        System.out.println("Boa tarde " + usuario.getName()+" !");
+        System.out.println("Email: " + usuario.getEmail());
         do {
             oi.printaInterface();
              n = scanner.nextInt();
@@ -76,6 +85,11 @@ public class Sistema {
             }
         }while (n != 0);
     }
+
+    /**
+     * Metodo que verifica o ID do pedido a ser alterado
+     * @return retorna o valor da posição do pedido no array
+     */
     private int escolherID(){
         Scanner scanner = new Scanner(System.in);
         String g;
