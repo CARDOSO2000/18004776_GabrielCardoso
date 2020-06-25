@@ -1,10 +1,12 @@
 package br.maua.Classes;
 
-import br.maua.ENUM.Estado;
-import br.maua.ENUM.Paagamento;
+
 import br.maua.ENUM.TipoDePizza;
 
-
+/**
+ * @author Gabriel de Laurentis Dias Cardoso 18.00477-6
+ * Classe pai que cria uma pizza
+ */
 public abstract class Pizza {
  private TipoDePizza Sabor;
  private int preco;
@@ -16,20 +18,21 @@ public abstract class Pizza {
 
  }
 
+ /**
+  * Getter para o dabor da pizza
+  * @return sabor
+  */
 
  public TipoDePizza getSabor() {
   return Sabor;
  }
 
+ /**
+  * Getter do preco da pizza
+  * @return valor
+  */
  public int getPreco() {
   return preco;
  }
 
- @Override
- public String toString() {
-  return "Pizza{" +
-          "Sabor=" + Sabor +
-          ", preco=" + preco +
-          '}';
- }
 }

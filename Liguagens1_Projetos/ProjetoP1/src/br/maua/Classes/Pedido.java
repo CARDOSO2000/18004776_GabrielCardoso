@@ -7,7 +7,10 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-
+/**
+ * @author Gabriel de Laurentis Dias Cardoso 18.00477-6
+ * Classe do pedido e cria o array das pizzas
+ */
 public class Pedido {
     private String ID;
     private int total;
@@ -18,6 +21,10 @@ public class Pedido {
         this.ID = geradorID();
         this.estado = Estado.PREPARACAO;
     }
+
+    /**
+     * Essa funcao adicio uma pizza ao array
+     */
 
     protected void AdicionarPizza(){
         Scanner scanner = new Scanner(System.in);
@@ -56,6 +63,11 @@ public class Pedido {
         }while (i != 0);
 
     }
+
+    /**
+     * Faz a somatoria dos precos das pizzas e define um total no pedido
+     * @return o total da conta
+     */
     protected int ValorTotal(){
         int valor = 0;
         for (Pizza pizzalista: this.pizza) {
@@ -64,6 +76,10 @@ public class Pedido {
        return  this.total = valor;
     }
 
+    /**
+     * Funcao que gera o ID do pedido
+     * @return  o ID
+     */
     private String geradorID(){
         Random random = new Random();
         String idGerado = "";
@@ -71,6 +87,10 @@ public class Pedido {
             idGerado += random.nextInt(10);
         return idGerado;
     }
+
+    /**
+     * Funcao que determina a forma de pagamento do ususario
+     */
     protected void FormadePagamento() {
         Scanner scanner = new Scanner(System.in);
         int i;
@@ -100,21 +120,35 @@ public class Pedido {
             }
     }
 
+    /**
+     * Getter para o ID
+     * @return ID
+     */
 
     public String getID() {
         return ID;
     }
 
+    /**
+     * getter para o Total
+     * @return
+     */
     public int getTotal() {
         return total;
     }
 
+    /**
+     * Getter para o estado do pedido
+     * @return
+     */
     public Estado getEstado() {
         return estado;
     }
 
 
-
+    /**
+     * Funcao que lista o pedido e printa ele
+     */
     public void Listarpedido(){
         System.out.println("Pedido: "+ getID()+ " {");
         for (Pizza pizzalista: this.pizza) {
@@ -124,6 +158,10 @@ public class Pedido {
         System.out.println("Total: "+getTotal() + " R$");
         System.out.println("Estado: "+ getEstado() + " }");
     }
+
+    /**
+     * Funcao para remover a pizza do pedido
+     */
     protected void removerPizza(){
         System.out.println("Qual deseja remover?");
         for (Pizza pizzalista: this.pizza) {
@@ -136,6 +174,10 @@ public class Pedido {
         this.pizza.remove(j);
         ValorTotal();
     }
+
+    /**
+     * Funcao para substituir uma pizza do pedido caso ocorreu algum erro
+     */
     protected void substituirPizza(){
         System.out.println("Qual deseja substituir?");
         for (Pizza pizzalista: this.pizza) {
@@ -177,6 +219,10 @@ public class Pedido {
         }
 
     }
+
+    /**
+     * Altera o estado do pedido
+     */
     void AlterarEstado(){
         System.out.println("Estado atual: " + this.estado);
         Scanner scanner = new Scanner(System.in);
