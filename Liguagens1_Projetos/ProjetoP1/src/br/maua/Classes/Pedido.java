@@ -120,8 +120,9 @@ public class Pedido {
         for (Pizza pizzalista: this.pizza) {
             System.out.println("Sabor: " + pizzalista.getSabor() + " Preco: " + pizzalista.getPreco() + " R$");
         }
+        System.out.println("Forma de Pagamento: " + this.paagamento);
         System.out.println("Total: "+getTotal() + " R$");
-        System.out.println("Estado"+ getEstado() + " }");
+        System.out.println("Estado: "+ getEstado() + " }");
     }
     protected void removerPizza(){
         System.out.println("Qual deseja remover?");
