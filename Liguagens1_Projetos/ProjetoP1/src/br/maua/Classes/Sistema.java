@@ -41,54 +41,61 @@ public class Sistema {
                             for (Pedido pedidos : listadepedidos) {
                                 System.out.println("Pedido: " + pedidos.getID());
                             }
-                            String w;
-                            w = scanner.next();
-                            p = escolherID(w);
+                            p = escolherID();
+                            if(p != -1) {
+                                do {
+                                    System.out.println("Oque deseja alterar?");
+                                    System.out.println("1 - Estado?");
+                                    System.out.println("2 - Forma de pagamento?");
+                                    System.out.println("3 - Sabor?");
+                                    System.out.println("4 - Remover pizza");
+                                    System.out.println("5 - Adicionar pizza?");
+                                    System.out.println("0 - Acabou");
+                                    j = scanner.nextInt();
+                                    switch (j) {
+                                        case 1:
+                                            listadepedidos.get(p).AlterarEstado();
+                                            break;
+                                        case 2:
+                                            listadepedidos.get(p).FormadePagamento();
+                                            break;
+                                        case 3:
+                                            listadepedidos.get(p).substituirPizza();
+                                            break;
+                                        case 4:
+                                            listadepedidos.get(p).removerPizza();
+                                        case 5:
+                                            listadepedidos.get(p).AdicionarPizza();
 
-                        System.out.println(p);
-
-                        do {
-                            System.out.println("Oque deseja alterar?");
-                            System.out.println("1 - Estado?");
-                            System.out.println("2 - Forma de pagamento?");
-                            System.out.println("3 - Sabor?");
-                            System.out.println("4 - Remover pizza");
-                            System.out.println("5 - Adicionar pizza?");
-                            System.out.println("0 - Acabou");
-                            j = scanner.nextInt();
-                            switch (j) {
-                                case 1:
-                                    listadepedidos.get((int) p).AlterarEstado();
-                                    break;
-                                case 2:
-                                    listadepedidos.get((int) p).FormadePagamento();
-                                    break;
-                                case 3:
-                                    listadepedidos.get((int) p).substituirPizza();
-                                    break;
-                                case 4:
-                                    listadepedidos.get((int) p).removerPizza();
-                                case 5:
-                                    listadepedidos.get((int) p).AdicionarPizza();
-
+                                    }
+                                } while (j != 0);
                             }
-                        } while (j != 0);
-
 
                     }
+                    break;
             }
         }while (n != 0);
     }
-    private int escolherID(String g){
+    private int escolherID(){
+        Scanner scanner = new Scanner(System.in);
+        String g;
+        g = scanner.next();
         int j = 0;
+        int i = 0;
         for (Pedido pedido: listadepedidos) {
-            int i = 0;
-            if(g.equals(pedido.getID())){
+
+             if (pedido.getID().equals(g)) {
                  j = i;
-            }
-            i++;
+             }
+
+             i++;
         }
-        return j;
+        if(listadepedidos.get(j).getID().equals(g)){
+            return j;
+        }
+        System.out.println(j);
+        return  -1;
+
     }
 
 }

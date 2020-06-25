@@ -118,9 +118,9 @@ public class Pedido {
     public void Listarpedido(){
         System.out.println("Pedido: "+ getID()+ " {");
         for (Pizza pizzalista: this.pizza) {
-            System.out.println("Sabor: " + pizzalista.getSabor() + " Preco: " + pizzalista.getPreco());
+            System.out.println("Sabor: " + pizzalista.getSabor() + " Preco: " + pizzalista.getPreco() + " R$");
         }
-        System.out.println("Total: "+getTotal());
+        System.out.println("Total: "+getTotal() + " R$");
         System.out.println("Estado"+ getEstado() + " }");
     }
     protected void removerPizza(){
