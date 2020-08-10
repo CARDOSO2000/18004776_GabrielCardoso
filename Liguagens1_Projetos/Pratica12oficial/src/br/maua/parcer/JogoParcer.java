@@ -14,7 +14,7 @@ public class JogoParcer {
     }
     public static Jogo fromJson(JSONObject json){
         Jogo jogo = new Jogo(json.getString("plataforma"),json.getString("nome"));
-        jogo.setStatus(StatusParcer.toStatus(json.getString("status")));
+        jogo.setStatus(StatusParcer.toStatus(json.getString("statusSt")));
         return jogo;
 
     }

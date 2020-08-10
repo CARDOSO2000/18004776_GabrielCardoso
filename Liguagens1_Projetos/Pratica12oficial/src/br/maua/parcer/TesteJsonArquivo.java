@@ -8,14 +8,14 @@ import java.io.*;
 
 public class TesteJsonArquivo {
     public static void main(String[] args) {
-    //    ListaJogos lsita = new ListaJogos();
-    //    lsita.addJogo(new Jogo("Pc", "minecraft"));
-      //  lsita.addJogo(new Jogo("Pc", "GTA"));
-        //lsita.addJogo(new Jogo("Pc", "Terraria"));
-       // lsita.addJogo(new Jogo("PS4", "FIFA"));
-        //JSONArray json = ListaDeJogosParcer.toJson(lsita);
-        //System.out.println("Array: " + json);
-        //escreverArquivo("jogos.json", json);
+     ListaJogos lsita = new ListaJogos();
+        lsita.addJogo(new Jogo("Pc", "minecraft"));
+        lsita.addJogo(new Jogo("Pc", "GTA"));
+        lsita.addJogo(new Jogo("Pc", "Terraria"));
+        lsita.addJogo(new Jogo("PS4", "FIFA"));
+        JSONArray json = ListaDeJogosParcer.toJson(lsita);
+        System.out.println("Array: " + json);
+        escreverArquivo("jogos.json", json);
         ListaJogos lista = ListaDeJogosParcer.fromJson(lerArquivo("jogos.json"));
         System.out.println("Lista Carregada:");
         System.out.println(""+lista);

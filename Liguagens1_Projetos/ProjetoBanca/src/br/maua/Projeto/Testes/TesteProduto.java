@@ -6,10 +6,10 @@ import br.maua.Projeto.models.Produto;
 
 public class TesteProduto {
     public static void main(String[] args) {
-        Produto produto = new Produto(TiposDeProdutos.GIBI, 25,34);
-        System.out.println("" + produto);
-        ListaDeProdutos listaDeProdutos = new ListaDeProdutos();
-        listaDeProdutos.addProduto(produto);
-        System.out.println(""+listaDeProdutos);
+       // Produto produto = new Produto(TiposDeProdutos.GIBI, 25,34,"");
+    //    System.out.println("" + produto);
+      //  ListaDeProdutos listaDeProdutos = new ListaDeProdutos();
+      //  listaDeProdutos.addProduto(produto);
+       // System.out.println(""+listaDeProdutos);
     }
 }

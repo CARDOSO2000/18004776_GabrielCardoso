@@ -13,7 +13,8 @@ public class ProdutoParsers {
         return json;
     }
     public static Produto fromJson(JSONObject json){
-        Produto produto = new Produto(json.getString("tipo"),json.getInt("valor"),json.getInt("quantidade"),json.getString("titulo"));
+        Produto produto = new Produto(TipoDeProdutoParsers.toTipo(json.getString("tipo")),json.getInt("valor"),json.getInt("quantidade"),json.getString("titulo"));
+        return  produto;
     }
 
 }
