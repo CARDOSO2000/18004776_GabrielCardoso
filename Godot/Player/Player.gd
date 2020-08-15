@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const ACELERACAO = 500
 const MAX_SPEED = 80
-const FRICTION = 500
+const FRICTION = 50
 var velocidade = Vector2.ZERO
 
 func _physics_process(delta):

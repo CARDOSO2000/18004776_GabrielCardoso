@@ -13,10 +13,14 @@ public class ListaDeProdutos {
         this.listaProduto.add(produto);
     }
 
+    public List<Produto> getListaProduto() {
+        return this.listaProduto;
+    }
+
     @Override
     public String toString() {
         return "ListaDeProdutos{" +
                 "listaProduto=" + listaProduto +
-                '}';
+                "}\n";
     }
 }

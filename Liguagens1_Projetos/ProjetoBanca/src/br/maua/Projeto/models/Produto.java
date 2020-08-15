@@ -22,11 +22,11 @@ public class Produto {
                 ", titulo='" + titulo + '\'' +
                 ", valor=" + valor +
                 ", quantidade=" + quantidade +
-                '}';
+                "}\n";
     }
 
     public String getTipo() {
-        return " "+ tipo;
+        return ""+ tipo;
     }
 
     public String getTitulo() {
