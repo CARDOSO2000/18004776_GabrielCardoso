@@ -23,6 +23,19 @@ public class Manga {
         return nome;
     }
 
+    @Override
+    public String toString() {
+        return "Manga{" +
+                "nome='" + nome + '\'' +
+                ", url='" + url + '\'' +
+                ", sinopse='" + sinopse + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", volume=" + volume +
+                ", capitulo=" + capitulo +
+                ", nota=" + nota +
+                '}';
+    }
+
     public String getUrl() {
         return url;
     }
