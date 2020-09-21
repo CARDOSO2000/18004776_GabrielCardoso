@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="FichaCompiladores" default="default" basedir=".">
+    <description>Builds, tests, and runs the project FichaCompiladores.</description>
+    <import file="nbproject/build-impl.xml"/>
+    <property name="jflexFile" value="Ficha.jflex" />
+    <property name="mainClass" value="Ficha.Lexer" />
+    <property name="jarFile" value="Ficha.jar" />
+    <property name="src" location="src" />
+    <property name="JFlexJar" location="JFlexJar" />
+    <property name="Jflex" location="Jflex" />
+    <property name="build" location="build" />
+    <property name="dist" location="dist" />
+    <taskdef name="jflex" classname="jflex.anttask.JFlexTask" classpath="${tools}/jflex-1.6.1.jar" />
+    <target name="init">
+        <!-- Criar o diretório build, de construção se ele não existir -->
+        <mkdir dir="${build}" />
+    </target>
+    <target name="compile" depends="init" description="compilar as fontes">
+        <!-- Executar jflex sobre o arquivo JFlex definido -->
+        <jflex file="${jflex}/${jflexFile}" destdir="${src}" />
+        <!-- Compilar o código Java em ${src} para ${build} -->
+        <javac srcdir="${src}" destdir="${build}" />
+    </target>
+    <target name="dist" depends="compile" description="gerar a distribuição">
+        <!-- Criar o diretório dist se ele não existir -->
+        <mkdir dir="${dist}" />
+        <!-- Empacotar o que existir em ${build} em  um arquivo .jar -->
+        <jar jarfile="${dist}/${jarFile}" basedir="${build}">
+            <manifest>
+                <attribute name="Main-Class" value="${mainClass}" />
+            </manifest>
+        </jar>
+    </target>
+    <target name="clean" description="clean up">
+        <!-- Apaga o que foi gerado em ${build} e ${dist} -->
+        <delete file="${src}/${mainClass}.java$" />
+        <delete dir="${build}" />
+        <delete dir="${dist}" />
+    </target>
+
+</project>
