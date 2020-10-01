@@ -11,7 +11,7 @@ import java.util.List;
 
 public class AnimeDao implements Dao<Anime>, DaoFields {
     private Connection connection;
-    private String myDBconnection = "jdbc:sqlite:sqlite(1).db";
+    private String myDBconnection = "jdbc:sqlite:lol.db";
 
     public AnimeDao(){
         try{

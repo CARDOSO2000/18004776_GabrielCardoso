@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MangaDao implements Dao<Manga>, DaoFields {
     private Connection connection;
-    private String myDBconnection = "jdbc:sqlite:sqlite(1).db";
+    private String myDBconnection = "jdbc:sqlite:lol.db";
 
     public MangaDao(){
         try{
