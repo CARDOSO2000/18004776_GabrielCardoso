@@ -3,7 +3,7 @@ package br.maua.dao;
 import br.maua.interfaces.Dao;
 import br.maua.interfaces.DaoFields;
 import br.maua.model.Anime;
-import br.maua.model.Manga;
+;
 
 import java.sql.*;
 import java.util.ArrayList;
