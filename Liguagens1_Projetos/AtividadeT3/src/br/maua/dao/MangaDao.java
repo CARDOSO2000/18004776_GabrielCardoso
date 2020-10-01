@@ -1,7 +1,10 @@
 package br.maua.dao;
 
+import br.maua.Menu.Menu;
+import br.maua.api.ApiReader;
 import br.maua.interfaces.Dao;
 import br.maua.interfaces.DaoFields;
+import br.maua.json.MangaParser;
 import br.maua.model.Manga;
 
 import java.sql.*;
@@ -10,7 +13,7 @@ import java.util.List;
 
 public class MangaDao implements Dao<Manga>, DaoFields {
     private Connection connection;
-    private String myDBconnection = "jdbc:sqlite:lol.db";
+    private String myDBconnection = "jdbc:sqlite:C:\\Users\\gdlau\\Desktop\\18004776_GabrielCardoso\\Liguagens1_Projetos\\AtividadeT3\\lol.db";
 
     public MangaDao(){
         try{
@@ -22,29 +25,44 @@ public class MangaDao implements Dao<Manga>, DaoFields {
     }
 
     @Override
-    public List<Manga> get(String condition) {
+    public List<Manga> get(String nome)  {
+        Menu menu = new Menu();
+        Manga manga1;
+        MangaParser mangaParser = new MangaParser();
+        String pesquisa;
         List<Manga> mangas = new ArrayList<>();
         try{
-            Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery(getSelectConditionalString(getTableName(), condition));
-            while(result.next()) {
-                Manga manga = new Manga(
-                        result.getString("Nome"),
-                        result.getString("Url"),
-                        result.getString("Sinopse"),
-                        result.getString("Tipo"),
-                        result.getInt("Quantidade_de_vol"),
-                        result.getInt("Quantidade_de_cap"),
-                        result.getFloat("Nota")
-                );
-                mangas.add(manga);
+            //Statement statement = connection.createStatement();
+            PreparedStatement preparedStatement = connection.prepareStatement(getSelectConditionalString(getTableName()));
+
+//            ResultSet result = statement.executeQuery(getSelectAllString(getTableName()));
+//            preparedStatement.executeUpdate();
+            preparedStatement.setString(1,nome);
+            ResultSet result = preparedStatement.executeQuery();
+            if (!result.next()){
+                pesquisa = menu.transformar(nome);
+                manga1 = mangaParser.fromJson(ApiReader.leituraJava11("manga",pesquisa));
+                create(manga1);
+                System.out.println("VOCE");
+                System.out.println(manga1);
+            }else {
+                    Manga manga = new Manga(result.getString("Nome"),
+                            result.getString("Url"),
+                            result.getString("Sinopse"),
+                            result.getString("Tipo"),
+                            result.getInt("Quantidade_de_vol"),
+                            result.getInt("Quantidade_de_cap"),
+                            result.getFloat("Nota"));
+                    mangas.add(manga);
+                System.out.println(mangas);
             }
+            result.close();
+
         }catch (Exception e){
             e.printStackTrace();
         }
-
         return mangas;
-    }
+}
 
     @Override
     public List<Manga> getAll() {
@@ -66,39 +84,13 @@ public class MangaDao implements Dao<Manga>, DaoFields {
             }
         }catch (Exception e){
             e.printStackTrace();
+            System.out.println("Banco vazio tente pesquisar antes!");
         }
 
         return mangas;
     }
 
-    @Override
-    public void update(Manga manga) {
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement(getUpdateString(getTableName()));
-            preparedStatement.setString(1, manga.getNome());
-            preparedStatement.setString(2, manga.getUrl());
-            preparedStatement.setString(3, manga.getSinopse());
-            preparedStatement.setDouble(4, manga.getNota());
-            preparedStatement.setString(5, manga.getTipo());
-            preparedStatement.setInt(6, manga.getVolume());
-            preparedStatement.setInt(7, manga.getCapitulo());
-            //Executa o PreparedStatement
-            int retorno = preparedStatement.executeUpdate();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
-    @Override
-    public void delete(Manga manga) {
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement(getDeleteString(getTableName()));
-            preparedStatement.setString(1, manga.getNome());
-            preparedStatement.executeUpdate();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public void create(Manga manga) {
@@ -123,15 +115,7 @@ public class MangaDao implements Dao<Manga>, DaoFields {
         return "Manga";
     }
 
-    @Override
-    public String getDeleteString(String table) {
-        return "DELETE FROM " + table + " WHERE Nome = ?";
-    }
 
-    @Override
-    public String getUpdateString(String table) {
-        return "UPDATE " + table +  " SET Nome = ?, Url = ?, Sinopse = ?, Nota = ?, Tipo = ?, Quantidade_de_vol = ?, Quantidade_de_cap = ? WHERE Nome = ?;";
-    }
 
     @Override
     public String getInsertString(String table) {
@@ -144,7 +128,7 @@ public class MangaDao implements Dao<Manga>, DaoFields {
     }
 
     @Override
-    public String getSelectConditionalString(String table, String condition) {
-        return "SELECT * FROM "+ table +  " WHERE " + condition;
+    public String getSelectConditionalString(String table) {
+        return "SELECT * FROM "+ table +  " WHERE Nome = ?";
     }
 }

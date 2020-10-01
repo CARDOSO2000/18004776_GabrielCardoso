@@ -1,12 +1,9 @@
 package br.maua.Menu;
 
-import br.maua.api.ApiReader;
+
 import br.maua.dao.AnimeDao;
 import br.maua.dao.MangaDao;
-import br.maua.json.AnimeParser;
-import br.maua.json.MangaParser;
-import br.maua.model.Anime;
-import br.maua.model.Manga;
+
 
 import java.util.Scanner;
 
@@ -30,16 +27,9 @@ public class Menu {
                         break;
                     }
                     else {
-                        try {
-                            animeDao.getAll();
-                            break;
-                        }catch (Exception exception){
-                            exception.printStackTrace();
-                            System.out.println("Nao tem nada na tabela ainda tente procurar um");
+                        System.out.println(animeDao.getAll());
                             break;
                         }
-
-                    }
 
                 case 2:
                     System.out.println("Deseja ver nossos mangas ou procurar um?");
@@ -51,14 +41,9 @@ public class Menu {
                         break;
                     }
                     else {
-                        try {
-                            mangaDao.getAll();
+                        System.out.println(mangaDao.getAll());
+
                             break;
-                        }catch (Exception exception){
-                            exception.printStackTrace();
-                            System.out.println("Nao tem nada na tabela ainda tente procurar um");
-                            break;
-                        }
                     }
 
             }
@@ -72,45 +57,21 @@ public class Menu {
         System.out.println("Digite 0- para sair");
     }
     public void menuManga() throws Exception{
-        Manga manga;
         MangaDao mangaDao = new MangaDao();
-        String pesquisa;
-        MangaParser mangaParser = new MangaParser();
          System.out.println("Qual manga deseja procurar?");
         Scanner scanner = new Scanner(System.in);
         String nome = scanner.nextLine();
-        if(mangaDao.get("Nome = " + "'" + nome + "'") == null){
-            pesquisa = transformar(nome);
-            manga = mangaParser.fromJson(ApiReader.leituraJava11("anime",pesquisa));
-            mangaDao.create(manga);
-            System.out.println(manga);
-        }
-        else{
-            System.out.println(mangaDao.get("Nome = " + "'" + nome + "'").toString());
-
-        }
+        mangaDao.get(nome);
     }
     public void menuAnime() throws Exception{
-        Anime anime;
         AnimeDao animeDao = new AnimeDao();
-        String pesquisa;
-        AnimeParser animeParser = new AnimeParser();
         System.out.println("Qual anime deseja procurar?");
         Scanner scanner = new Scanner(System.in);
         String nome = scanner.nextLine();
-        if(animeDao.get("Nome = " + "'" + nome + "'") == null){
-            pesquisa = transformar(nome);
-            anime = animeParser.fromJson(ApiReader.leituraJava11("anime",pesquisa));
-            animeDao.create(anime);
-            System.out.println(anime);
-        }
-        else{
-            System.out.println(animeDao.get("Nome = " + "'" + nome + "'").toString());
-
-        }
+        animeDao.get(nome);
 
     }
-    private String transformar(String nome){
+    public String transformar(String nome){
         char [] letras = nome.toCharArray();
         String nome2 = "";
         String a = "%20";

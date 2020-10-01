@@ -13,7 +13,7 @@ public class APITeste {
         System.out.println("Nome: ");
         String manga = scanner.nextLine();
         JSONObject jsonObject = ApiReader.leituraJava11(tipo, manga);
-        System.out.println(jsonObject.toString());
+        System.out.println(jsonObject.getJSONArray("results").getJSONObject(0).getString("title"));
 
     }
 }
