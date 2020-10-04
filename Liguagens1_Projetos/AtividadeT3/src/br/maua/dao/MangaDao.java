@@ -11,10 +11,18 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Gabriel Cardoso
+ * Classe que manipula o banco de dados
+ */
+
 public class MangaDao implements Dao<Manga>, DaoFields {
     private Connection connection;
     private String myDBconnection = "jdbc:sqlite:C:\\Users\\gdlau\\Desktop\\18004776_GabrielCardoso\\Liguagens1_Projetos\\AtividadeT3\\lol.db";
 
+    /**
+     * Conexão com o DB
+     */
     public MangaDao(){
         try{
             connection = DriverManager.getConnection(myDBconnection);
@@ -24,6 +32,11 @@ public class MangaDao implements Dao<Manga>, DaoFields {
         }
     }
 
+    /**
+     * Metodo que varifica se o Manga esta no banco e o mostra e se não estiver vai no API e o adiciona
+     * @param nome
+     * @return
+     */
     @Override
     public List<Manga> get(String nome)  {
         Menu menu = new Menu();

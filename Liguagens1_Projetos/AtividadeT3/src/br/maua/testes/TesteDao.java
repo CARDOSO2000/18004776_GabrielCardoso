@@ -9,7 +9,10 @@ import br.maua.model.Anime;
 import br.maua.model.Manga;
 
 import java.sql.*;
-
+/**
+ * @author Gabriel Cardoso
+ * classe de teste
+ */
 public class TesteDao {
     public static void main(String[] args) throws Exception {
         Menu menu = new Menu();
