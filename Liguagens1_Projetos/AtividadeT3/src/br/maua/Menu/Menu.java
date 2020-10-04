@@ -7,6 +7,9 @@ import br.maua.dao.MangaDao;
 
 import java.util.Scanner;
 
+/**
+ * Menu para o usuario trabalhar
+ */
 public class Menu {
     public void menu() throws Exception {
         int i = 1;
@@ -50,6 +53,10 @@ public class Menu {
 
         }while(i != 0);
     }
+
+    /**
+     * Uma interface para o usuario
+     */
     public void decisao(){
         System.out.println("Ola!Bem vindo! Deseja procurar um anime ou manga?\n");
         System.out.println("Digite 1- anime");
@@ -71,6 +78,12 @@ public class Menu {
         animeDao.get(nome);
 
     }
+
+    /**
+     * Metodo usado para que quando for realizado uma pesquisa no api se houver espaço tranformar para %20
+     * @param nome
+     * @return
+     */
     public String transformar(String nome){
         char [] letras = nome.toCharArray();
         String nome2 = "";

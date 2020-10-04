@@ -8,8 +8,10 @@ import br.maua.json.AnimeParser;
 import br.maua.json.MangaParser;
 import br.maua.model.Anime;
 import br.maua.model.Manga;
-;
-
+/**
+ * @author Gabriel Cardoso
+ * Classe que manipula o banco de dados
+ */
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +19,9 @@ import java.util.List;
 public class AnimeDao implements Dao<Anime>, DaoFields {
     private Connection connection;
     private String myDBconnection = "jdbc:sqlite:C:\\Users\\gdlau\\Desktop\\18004776_GabrielCardoso\\Liguagens1_Projetos\\AtividadeT3\\lol.db";
-
+    /**
+     * Conexão com o DB
+     */
     public AnimeDao(){
         try{
             connection = DriverManager.getConnection(myDBconnection);
@@ -26,6 +30,11 @@ public class AnimeDao implements Dao<Anime>, DaoFields {
             throwables.printStackTrace();
         }
     }
+    /**
+     * Metodo que varifica se o Anime esta no banco e o mostra e se não estiver vai no API e o adiciona
+     * @param nome
+     * @return
+     */
     @Override
     public List<Anime> get(String nome) {
         Menu menu = new Menu();
@@ -64,6 +73,10 @@ public class AnimeDao implements Dao<Anime>, DaoFields {
         }
         return animes;
     }
+    /**
+     * Lista todos os animes no Banco
+     * @return
+     */
 
     @Override
     public List<Anime> getAll() {
@@ -89,7 +102,10 @@ public class AnimeDao implements Dao<Anime>, DaoFields {
 
     }
 
-
+    /**
+     * Adiciona o anime novo no banco de dados
+     * @param anime
+     */
 
     @Override
     public void create(Anime anime) {

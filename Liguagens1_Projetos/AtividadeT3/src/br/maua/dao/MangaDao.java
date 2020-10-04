@@ -77,6 +77,10 @@ public class MangaDao implements Dao<Manga>, DaoFields {
         return mangas;
 }
 
+    /**
+     * Lista todos os mangas no Banco
+     * @return
+     */
     @Override
     public List<Manga> getAll() {
         List<Manga> mangas = new ArrayList<>();
@@ -104,7 +108,10 @@ public class MangaDao implements Dao<Manga>, DaoFields {
     }
 
 
-
+    /**
+     * Adiciona o manga novo no banco de dados
+     * @param manga
+     */
     @Override
     public void create(Manga manga) {
         try{

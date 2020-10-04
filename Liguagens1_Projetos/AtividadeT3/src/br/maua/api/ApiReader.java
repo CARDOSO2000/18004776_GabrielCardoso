@@ -11,6 +11,10 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+/**
+ * @author Gabriel Cardoso
+ * Faz a conexão com o API e retorna um JSONObject
+ */
 public class ApiReader {
     public static JSONObject leituraJava11(String tipo, String nome) throws  Exception{
 

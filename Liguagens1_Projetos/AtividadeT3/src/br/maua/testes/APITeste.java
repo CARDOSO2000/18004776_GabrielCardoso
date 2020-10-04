@@ -5,6 +5,10 @@ import org.json.JSONObject;
 
 import java.util.Scanner;
 
+/**
+ * @author Gabriel Cardoso
+ * Teste para trabalhar com o API
+ */
 public class APITeste {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);

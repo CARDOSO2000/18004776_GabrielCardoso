@@ -1,5 +1,9 @@
 package br.maua.model;
 
+/**
+ * @author Gabriel Cardoso
+ * Classe manga
+ */
 public class Manga {
     private String nome;
     private String url;
@@ -9,6 +13,16 @@ public class Manga {
     private int capitulo;
     private float nota;
 
+    /**
+     * Construtor do Manga
+     * @param nome
+     * @param url
+     * @param sinopse
+     * @param tipo
+     * @param volume
+     * @param capitulo
+     * @param nota
+     */
     public Manga(String nome, String url, String sinopse, String tipo, int volume, int capitulo, float nota) {
         this.nome = nome;
         this.url = url;
