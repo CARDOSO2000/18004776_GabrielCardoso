@@ -1,8 +1,16 @@
+
+
 import 'package:flutter/material.dart';
+import 'package:projeto_gabriel_p4/Classe/Pokemon.dart';
+import 'package:projeto_gabriel_p4/Utilities/NetWorkHelper.dart';
 
 import 'Gen1.dart';
+import 'Gen2.dart';
+import 'Gen3.dart';
+
 
 class MinhaTela extends StatelessWidget {
+  var link = "https://pokeapi.co/api/v2/pokemon/";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,14 +18,59 @@ class MinhaTela extends StatelessWidget {
 
       body: Column(
         children: [SizedBox(width: 1000,height: 100,child: Image.network("https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png")),
-          FlatButton(onPressed: () {
+          FlatButton(onPressed: () async{
+
+            List<Pokemon> pokemons = List<Pokemon>();
+            _onLoading(context);
+            //Aviso de um tempo de espera para carregar a página
+            for(int i=1;i<=151;i++) {
+              var requisicao = NetworkHelper(url: link+i.toString());
+              var dados = Pokemon.fromJson(await requisicao.getData());
+              Pokemon pokemon = await dados;
+              pokemons.add(pokemon);
+
+            }
+
+            Navigator.pop(context);
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Gen1()),
+              MaterialPageRoute(builder: (context) => Gen1(pokemons)),
             );
           }, child: Text("Gen 1")),
-          FlatButton(onPressed: null, child: Text("Gen 2")),
-          FlatButton(onPressed: null, child: Text("Gen 3")),
+          FlatButton(onPressed: () async{
+            List<Pokemon> pokemons = List<Pokemon>();
+            _onLoading(context);
+            //Aviso de um tempo de espera para carregar a página
+            for(int i=152;i<=251;i++) {
+              var requisicao = NetworkHelper(url: link+i.toString());
+              var dados = Pokemon.fromJson(await requisicao.getData());
+              Pokemon pokemon = await dados;
+              pokemons.add(pokemon);
+
+            }
+            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Gen2(pokemons)),
+            );
+          }, child: Text("Gen 2")),
+          FlatButton(onPressed: () async{
+            List<Pokemon> pokemons = List<Pokemon>();
+            _onLoading(context);
+            //Aviso de um tempo de espera para carregar a página
+            for(int i=252;i<=386;i++) {
+              var requisicao = NetworkHelper(url: link+i.toString());
+              var dados = Pokemon.fromJson(await requisicao.getData());
+              Pokemon pokemon = await dados;
+              pokemons.add(pokemon);
+
+            }
+            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Gen3(pokemons)),
+            );
+          }, child: Text("Gen 3")),
           FlatButton(onPressed: null, child: Text("Gen 4")),
           FlatButton(onPressed: null, child: Text("Gen 5")),
           FlatButton(onPressed: null, child: Text("Gen 6")),
@@ -25,4 +78,15 @@ class MinhaTela extends StatelessWidget {
       ),
     );
   }
+  _onLoading(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: new Text("Carregando"),
+            actions: <Widget>[
+             CircularProgressIndicator()
+            ],
+          );
+        });}
 }
