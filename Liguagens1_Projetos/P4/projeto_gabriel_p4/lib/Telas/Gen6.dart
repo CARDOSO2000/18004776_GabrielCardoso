@@ -3,10 +3,10 @@ import 'package:projeto_gabriel_p4/Classe/Pokemon.dart';
 import 'package:projeto_gabriel_p4/Utilities/NetWorkHelper.dart';
 import 'Utilities/NetWorkHelper.dart';
 
-class Gen4 extends StatelessWidget {
+class Gen6 extends StatelessWidget {
   List<Pokemon> pokemons;
 
-  Gen4(List poke) {
+  Gen6(List poke) {
     this.pokemons = poke;
   }
 
@@ -21,7 +21,7 @@ class Gen4 extends StatelessWidget {
                 pokemons[index].id.toString()),
           leading: Image.network(
               'https://pokeres.bastionbot.org/images/pokemon/${index +
-                  387}.png'),)))
+                  650}.png'),)))
     );
   }
 }
