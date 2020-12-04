@@ -41,4 +41,67 @@ public class Personagem {
         this.pedra = pedra;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getRaca() {
+        return raca;
+    }
+
+    public String getProfissao() {
+        return profissao;
+    }
+
+    public String getArmadura() {
+        return armadura;
+    }
+
+    public String getPedra() {
+        return pedra;
+    }
+
+    public String getArmas() {
+        return armas;
+    }
+
+    public float getMana() {
+        return mana;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public float getAtaque() {
+        return ataque;
+    }
+
+    public float getAtaque_magico() {
+        return ataque_magico;
+    }
+
+    public float getDefesa() {
+        return defesa;
+    }
+
+    public float getDefesa_magica() {
+        return defesa_magica;
+    }
+
+    public float getVelociade() {
+        return velociade;
+    }
+
+    public float getDestreza() {
+        return destreza;
+    }
+
+    public float getExp() {
+        return exp;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
 }

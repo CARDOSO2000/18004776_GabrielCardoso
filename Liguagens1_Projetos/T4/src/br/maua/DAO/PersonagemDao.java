@@ -89,17 +89,67 @@ public class PersonagemDao implements Dao<Personagem>, DAOFields {
 
     @Override
     public void update(Personagem personagem) {
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(getUpdateString(getTableName()));
+            preparedStatement.setString(1,personagem.getNome());
+            preparedStatement.setString(2,personagem.getProfissao());
+            preparedStatement.setFloat(3,personagem.getMana());
+            preparedStatement.setFloat(4,personagem.getAtaque());
+            preparedStatement.setFloat(5,personagem.getAtaque_magico());
+            preparedStatement.setFloat(6,personagem.getDefesa());
+            preparedStatement.setFloat(7,personagem.getDefesa_magica());
+            preparedStatement.setFloat(8,personagem.getVelociade());
+            preparedStatement.setString(9,personagem.getArmadura());
+            preparedStatement.setString(10,personagem.getArmas());
+            preparedStatement.setString(11,personagem.getPedra());
+            preparedStatement.setInt(12,personagem.getId());
 
+            //Executa o PreparedStatement
+            int retorno = preparedStatement.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void delete(Personagem personagem) {
-
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(getDeleteString(getTableName()));
+            preparedStatement.setInt(1,personagem.getId());
+            //Executa o PreparedStatement
+            int retorno = preparedStatement.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void create(Personagem personagem) {
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(getUpdateString(getTableName()));
+            preparedStatement.setInt(1,personagem.getId());
+            preparedStatement.setString(2,personagem.getNome());
+            preparedStatement.setString(3,personagem.getProfissao());
+            preparedStatement.setFloat(4,personagem.getMana());
+            preparedStatement.setFloat(5,personagem.getAtaque());
+            preparedStatement.setFloat(6,personagem.getAtaque_magico());
+            preparedStatement.setFloat(7,personagem.getDefesa());
+            preparedStatement.setFloat(8,personagem.getDefesa_magica());
+            preparedStatement.setFloat(9,personagem.getVelociade());
+            preparedStatement.setFloat(10,personagem.getDestreza());
+            preparedStatement.setFloat(11,personagem.getExp());
+            preparedStatement.setInt(12,personagem.getNivel());
+            preparedStatement.setString(13,personagem.getArmadura());
+            preparedStatement.setString(14,personagem.getArmas());
+            preparedStatement.setString(15,personagem.getPedra());
+            preparedStatement.setString(16,personagem.getRaca());
 
+
+            //Executa o PreparedStatement
+            int retorno = preparedStatement.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     @Override
     public String getTableName() {
@@ -113,7 +163,7 @@ public class PersonagemDao implements Dao<Personagem>, DAOFields {
 
     @Override
     public String getUpdateString(String table) {
-        return "UPDATE " + table +  " SET  Nome = ?, Profissao = ?,  Armadura = ?, Arma = ?, Pedra = ? WHERE ID = ?;";
+        return "UPDATE " + table +  " SET  Nome = ?, Profissao = ?,Mana =?, Ataque =?, Ataque_magico = ?, Defesa = ?, Defesa_magica = ?, Velociade = ?, Armadura = ?, Arma = ?, Pedra = ? WHERE ID = ?;";
     }
 
     @Override
