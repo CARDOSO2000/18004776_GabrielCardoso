@@ -5,6 +5,7 @@ package br.maua.api;
 
 
 import org.json.JSONObject;
+import sun.net.www.http.HttpClient;
 
 import java.net.URI;
 import java.net.http.HttpClient;

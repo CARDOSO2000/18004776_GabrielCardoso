@@ -1,0 +1,5 @@
+package br.maua.Enum;
+
+public enum Pedra {
+    PEDRA_AZUL, PEDRA_ROXA, PEDRA_VERMELHA, PEDRA_VERDE, PEDRA_CELESTIAL, NAO_POSSUI
+}
