@@ -20,11 +20,12 @@ public class PersonagemDao implements Dao<Personagem>, DAOFields {
 
 
     @Override
-    public List<Personagem> get(String condition) {
+    public Personagem get(int condition) {
         List<Personagem> personagems = new ArrayList<>();
         try{
-            Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery(getSelectConditionalString(getTableName(),condition));
+            PreparedStatement preparedStatement = connection.prepareStatement(getSelectConditionalString(getTableName()));
+            preparedStatement.setInt(1,condition);
+            ResultSet result = preparedStatement.executeQuery();
             while(result.next()){
                 Personagem personagem = new Personagem(
                         result.getInt("ID"),
@@ -50,7 +51,7 @@ public class PersonagemDao implements Dao<Personagem>, DAOFields {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return personagems;
+        return personagems.get(0);
     }
 
     @Override
@@ -67,7 +68,7 @@ public class PersonagemDao implements Dao<Personagem>, DAOFields {
                         result.getFloat("Mana"),
                         result.getString("Nome"),
                         result.getFloat("Ataque"),
-                        result.getFloat("Atque_magico"),
+                        result.getFloat("Ataque_magico"),
                         result.getFloat("Defesa"),
                         result.getFloat("Defesa_magica"),
                         result.getFloat("Velocidade"),
@@ -126,7 +127,7 @@ public class PersonagemDao implements Dao<Personagem>, DAOFields {
     @Override
     public void create(Personagem personagem) {
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement(getUpdateString(getTableName()));
+            PreparedStatement preparedStatement = connection.prepareStatement(getInsertString(getTableName()));
             preparedStatement.setInt(1,personagem.getId());
             preparedStatement.setString(2,personagem.getNome());
             preparedStatement.setString(3,personagem.getProfissao());
@@ -163,12 +164,12 @@ public class PersonagemDao implements Dao<Personagem>, DAOFields {
 
     @Override
     public String getUpdateString(String table) {
-        return "UPDATE " + table +  " SET  Nome = ?, Profissao = ?,Mana =?, Ataque =?, Ataque_magico = ?, Defesa = ?, Defesa_magica = ?, Velociade = ?, Armadura = ?, Arma = ?, Pedra = ? WHERE ID = ?;";
+        return "UPDATE " + table +  " SET  Nome = ?, Profissao = ?,Mana =?, Ataque =?, Ataque_magico = ?, Defesa = ?, Defesa_magica = ?, Velocidade = ?, Armadura = ?, Arma = ?, Pedra = ? WHERE ID = ?;";
     }
 
     @Override
     public String getInsertString(String table) {
-        return "INSERT INTO " + table + " (ID, Nome, Profissao, Mana, Ataque, Ataque_magico, Defesa, Defesa_magica, Velociade, Destreza, Exp, Nivel_atual, Armadura, Arma, Pedra, Raca) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        return "INSERT INTO " + table + " (ID, Nome, Profissao, Mana, Ataque, Ataque_magico, Defesa, Defesa_magica, Velocidade, Destreza, Exp, Nivel_atual, Armadura, Arma, Pedra, Raca) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     }
 
     @Override
@@ -177,7 +178,7 @@ public class PersonagemDao implements Dao<Personagem>, DAOFields {
     }
 
     @Override
-    public String getSelectConditionalString(String table, String condition) {
-        return null;
+    public String getSelectConditionalString(String table) {
+         return "SELECT * FROM " + table + "WHERE ID = ?";
     }
 }
