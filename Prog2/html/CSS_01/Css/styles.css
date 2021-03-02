@@ -1,0 +1,33 @@
+#titulo{
+    border-bottom: 1px dashed black;
+    background-color: lightsalmon;
+}
+p.final-pagina#rodape{
+    border-bottom: 1px solid black;
+    background-color: #CCC;
+    padding: 12px
+    text-align: center;
+}
+h1 {
+            
+    color: yellow;
+    text-align: center;
+}
+p{
+
+    color: blue;
+    border: solid 1px black;
+}
+strong{
+    color: violet;
+    background-color: orange;
+}
+.curso, .novo-curso{
+    background-color: aliceblue;
+}
+.novo-curso{
+    color: red;
+}
+article p{
+    padding: 20px;
+}
